@@ -1,0 +1,6 @@
+{
+  "name": "スプラメモ - ルール×ステージ戦略メモ",
+  "description": "スプラトゥーンの全5ルール×25ステージ（全125通り）の立ち回り・初動・ギア構成メモを管理できるWebアプリ",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

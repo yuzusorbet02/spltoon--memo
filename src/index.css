@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
+}
+
+button, input, textarea {
+  touch-action: manipulation;
+}
