@@ -40,7 +40,7 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
           <div className="space-y-2">
             <h3 className="font-bold text-white text-sm flex items-center gap-1.5 font-['M_PLUS_Rounded_1c']">
               <CheckCircle2 className="w-4 h-4 text-yellow-400" />
-              <span>全125通りの独立メモ</span>
+              <span>各ステージ・ルールの独立メモ</span>
             </h3>
             <p className="text-slate-400">
               5つのルール（ナワバリ・エリア・ヤグラ・ホコ・アサリ）と25のステージの組み合わせごとに、それぞれ完全に独立したメモが用意されています。ルールやステージを切り替えても、入力内容は即座に保持されます。
@@ -75,13 +75,16 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
             </h3>
             <ul className="list-disc pl-4 space-y-1 text-slate-400">
               <li>
+                <strong className="text-slate-200">ステージ別とブキ別の切替:</strong> 画面上部のタブから「ステージ別」と「武器別」を自由に切り替えてメモを管理できます。
+              </li>
+              <li>
                 <strong className="text-slate-200">2画面メモ比較:</strong> ステージを2つ選ぶことでメモを同時に開いて見比べ・編集できます（✕ボタンで閉じることが可能）。
               </li>
               <li>
                 <strong className="text-slate-200">サイト名の変更:</strong> 左上の鉛筆アイコンからサイト名を自由に変更できます。
               </li>
               <li>
-                <strong className="text-slate-200">ステージ送り:</strong> 「前へ」「次へ」ボタンで素早くステージを切り替え。
+                <strong className="text-slate-200">ステージ送り・ブキ送り:</strong> 「前へ」「次へ」ボタンで素早く切り替え。
               </li>
               <li>
                 <strong className="text-slate-200">メモをコピー:</strong> 入力したメモをワンクリックでクリップボードにコピー。

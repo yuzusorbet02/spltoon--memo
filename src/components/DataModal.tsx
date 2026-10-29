@@ -15,13 +15,14 @@ import {
   importMemosJson,
   clearAllMemos,
   loadAllMemos,
+  loadAllWeaponMemos,
 } from '../services/memoStorage';
-import { MemoStore } from '../types';
+import { MemoStore, WeaponMemoStore } from '../types';
 
 interface DataModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onDataUpdated: (newStore: MemoStore) => void;
+  onDataUpdated: (newStore: MemoStore, newWeaponStore?: WeaponMemoStore) => void;
 }
 
 export const DataModal: React.FC<DataModalProps> = ({
@@ -73,11 +74,12 @@ export const DataModal: React.FC<DataModalProps> = ({
     const res = importMemosJson(importText);
     if (res.success) {
       const updated = loadAllMemos();
-      onDataUpdated(updated);
+      const updatedWeapons = loadAllWeaponMemos();
+      onDataUpdated(updated, updatedWeapons);
       setImportText('');
       setFeedback({
         type: 'success',
-        message: `${res.count} 件のメモデータを正常に復元しました！`,
+        message: `ステージメモ ${res.count} 件、ブキメモ ${res.weaponCount} 件を正常に復元しました！`,
       });
     } else {
       setFeedback({ type: 'error', message: res.error || '復元に失敗しました。' });
@@ -94,10 +96,11 @@ export const DataModal: React.FC<DataModalProps> = ({
       const res = importMemosJson(content);
       if (res.success) {
         const updated = loadAllMemos();
-        onDataUpdated(updated);
+        const updatedWeapons = loadAllWeaponMemos();
+        onDataUpdated(updated, updatedWeapons);
         setFeedback({
           type: 'success',
-          message: `ファイルから ${res.count} 件のメモを復元しました！`,
+          message: `ファイルからステージメモ ${res.count} 件、ブキメモ ${res.weaponCount} 件を復元しました！`,
         });
       } else {
         setFeedback({ type: 'error', message: res.error || 'ファイルの読み込みに失敗しました。' });
@@ -108,11 +111,11 @@ export const DataModal: React.FC<DataModalProps> = ({
 
   const handleResetAll = () => {
     const confirm = window.confirm(
-      '【警告】すべてのルール・ステージのメモが完全に消去されます。\n本当によろしいですか？\n（事前にバックアップを取ることを推奨します）'
+      '【警告】すべてのルール・ステージのメモおよびブキ別メモが完全に消去されます。\n本当によろしいですか？\n（事前にバックアップを取ることを推奨します）'
     );
     if (confirm) {
-      const empty = clearAllMemos();
-      onDataUpdated(empty);
+      const { stageStore, weaponStore } = clearAllMemos();
+      onDataUpdated(stageStore, weaponStore);
       setFeedback({ type: 'success', message: 'すべてのメモを消去しました。' });
     }
   };
@@ -169,7 +172,7 @@ export const DataModal: React.FC<DataModalProps> = ({
               <span>データの書き出し (バックアップ)</span>
             </h3>
             <p className="text-xs text-slate-400">
-              全125通りのメモデータをJSON形式で保存します。PCやスマホの機種変更時にも安心です。
+              すべてのステージメモデータおよび武器別メモをJSON形式でまとめて保存します。PCやスマホの機種変更時にも安心です。
             </p>
             <div className="flex flex-wrap gap-2.5">
               <button

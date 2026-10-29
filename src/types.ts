@@ -37,3 +37,22 @@ export interface MemoData {
 }
 
 export type MemoStore = Record<string, MemoData>;
+
+export type ViewMode = 'stage' | 'weapon';
+
+export interface WeaponInfo {
+  id: string;
+  name: string;
+  category: string;
+  kana: string;
+  isCustom?: boolean;
+}
+
+export interface WeaponMemoData {
+  weaponId: string;
+  weaponName: string;
+  content: string;
+  updatedAt: number;
+}
+
+export type WeaponMemoStore = Record<string, WeaponMemoData>;
