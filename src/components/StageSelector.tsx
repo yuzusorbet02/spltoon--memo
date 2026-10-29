@@ -95,9 +95,9 @@ export const StageSelector: React.FC<StageSelectorProps> = React.memo(({
   );
 
   return (
-    <div className="flex flex-col bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg">
+    <div className="flex flex-col bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg h-full max-h-full">
       {/* Header & Controls */}
-      <div className="p-2 sm:p-2.5 border-b border-slate-800 space-y-1.5 bg-slate-950">
+      <div className="p-2 sm:p-2.5 border-b border-slate-800 space-y-1.5 bg-slate-950 shrink-0">
         <div className="flex items-center justify-between gap-1.5">
           <div className="flex items-center gap-1.5">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-300 font-['M_PLUS_Rounded_1c']">
@@ -144,8 +144,8 @@ export const StageSelector: React.FC<StageSelectorProps> = React.memo(({
         </div>
       </div>
 
-      {/* Button Grid: 2 columns of independent stage buttons without scrolling */}
-      <div className="p-1.5 sm:p-2">
+      {/* Button Grid: 2 columns of independent stage buttons. Scrollable on mobile with safe bottom spacing; compact non-scrolling on desktop */}
+      <div className="p-1.5 sm:p-2 flex-1 min-h-0 overflow-y-auto overscroll-contain lg:overflow-visible pb-28 sm:pb-24 lg:pb-2">
         {filteredStages.length === 0 ? (
           <div className="p-6 text-center text-slate-400 text-xs">
             該当するステージが見つかりません
@@ -172,7 +172,7 @@ export const StageSelector: React.FC<StageSelectorProps> = React.memo(({
 
       {/* Mobile Footer for closing drawer when done selecting */}
       {onCloseMobileDrawer && (
-        <div className="p-2.5 border-t border-slate-800 bg-slate-950 shrink-0 lg:hidden flex items-center justify-between gap-2">
+        <div className="p-2.5 border-t border-slate-800 bg-slate-950 shrink-0 lg:hidden flex items-center justify-between gap-2 pb-[max(0.75rem,calc(env(safe-area-inset-bottom)+0.5rem))]">
           <div className="text-xs text-slate-400 font-medium font-['M_PLUS_Rounded_1c']">
             表示中: <span className="font-bold text-yellow-400">{openStageIds.length}</span>/2
           </div>

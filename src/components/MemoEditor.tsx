@@ -291,7 +291,7 @@ export const MemoEditor: React.FC<MemoEditorProps> = React.memo(({
       </div>
 
       {/* Bottom Status & Quick Action Bar */}
-      <div className="p-3 sm:p-4 border-t border-slate-800 bg-slate-950 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <div className="p-3 sm:p-4 border-t border-slate-800 bg-slate-950 flex flex-wrap items-center justify-between gap-3 text-xs pb-[max(0.75rem,calc(env(safe-area-inset-bottom)+0.5rem))]">
         {/* Status indicator */}
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5 text-slate-400">

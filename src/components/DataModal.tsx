@@ -260,7 +260,7 @@ export const DataModal: React.FC<DataModalProps> = ({
         </div>
 
         {/* Modal Footer */}
-        <div className="p-3 sm:p-4 border-t border-slate-800 bg-slate-950/80 flex justify-end">
+        <div className="p-3 sm:p-4 border-t border-slate-800 bg-slate-950/80 flex justify-end pb-[max(0.75rem,calc(env(safe-area-inset-bottom)+0.5rem))]">
           <button
             type="button"
             onClick={onClose}

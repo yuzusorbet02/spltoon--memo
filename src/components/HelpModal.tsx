@@ -64,7 +64,7 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
               <span>PCとスマホ両対応</span>
             </h3>
             <p className="text-slate-400">
-              スマートフォンでは片手でも押しやすい大型タップターゲットと下部ステージ切り替え drawer を提供。PCでは広い画面でステージ一覧とメモエディタを横並びで快適に編集できます。
+              スマートフォンでは片手でも押しやすい大型タップターゲットと下部ステージ選択メニューを提供。PCでは広い画面でステージ一覧とメモエディタを横並びで快適に編集できます。
             </p>
           </div>
 
@@ -94,7 +94,7 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Footer */}
-        <div className="p-3 sm:p-4 border-t border-slate-800 bg-slate-950/80 flex justify-end">
+        <div className="p-3 sm:p-4 border-t border-slate-800 bg-slate-950/80 flex justify-end pb-[max(0.75rem,calc(env(safe-area-inset-bottom)+0.5rem))]">
           <button
             type="button"
             onClick={onClose}

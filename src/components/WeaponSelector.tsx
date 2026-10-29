@@ -64,9 +64,9 @@ export const WeaponSelector: React.FC<WeaponSelectorProps> = React.memo(({
   }, [weapons, searchQuery]);
 
   return (
-    <div className="flex flex-col bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg relative">
+    <div className="flex flex-col bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg relative h-full max-h-full">
       {/* Header & Compact Weapon Addition Bar */}
-      <div className="p-3 sm:p-3.5 border-b border-slate-800 space-y-2 bg-slate-950">
+      <div className="p-3 sm:p-3.5 border-b border-slate-800 space-y-2 bg-slate-950 shrink-0">
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-300 font-['M_PLUS_Rounded_1c']">
@@ -169,8 +169,8 @@ export const WeaponSelector: React.FC<WeaponSelectorProps> = React.memo(({
         )}
       </div>
 
-      {/* Weapon Buttons List */}
-      <div className="p-2 sm:p-2.5 min-h-[160px] max-h-[calc(100vh-340px)] overflow-y-auto">
+      {/* Weapon Buttons List with safe bottom padding for mobile scroll */}
+      <div className="p-2 sm:p-2.5 min-h-[160px] flex-1 min-h-0 overflow-y-auto overscroll-contain pb-28 sm:pb-24 lg:pb-2.5">
         {weapons.length === 0 ? (
           <div className="py-10 px-4 text-center text-slate-400 text-xs space-y-3">
             <p className="font-semibold text-slate-300 font-['M_PLUS_Rounded_1c']">
@@ -255,7 +255,7 @@ export const WeaponSelector: React.FC<WeaponSelectorProps> = React.memo(({
 
       {/* Mobile Footer */}
       {onCloseMobileDrawer && weapons.length > 0 && (
-        <div className="p-2.5 border-t border-slate-800 bg-slate-950 shrink-0 lg:hidden flex justify-end">
+        <div className="p-2.5 border-t border-slate-800 bg-slate-950 shrink-0 lg:hidden flex justify-end pb-[max(0.75rem,calc(env(safe-area-inset-bottom)+0.5rem))]">
           <button
             type="button"
             onClick={onCloseMobileDrawer}

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useRef, useMemo, useCallback } from 'react';
+import React, { useState, useRef, useMemo, useCallback, useEffect } from 'react';
 import { RuleId, MemoData, MemoStore, ViewMode, WeaponMemoData, WeaponMemoStore, WeaponInfo } from './types';
 import { RULES, STAGES, STAGE_ID_MIGRATIONS } from './data/constants';
 import {
@@ -412,7 +412,7 @@ export default function App() {
       />
 
       {/* Main Workspace */}
-      <main className="max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-6 flex-1 flex flex-col space-y-4 sm:space-y-6">
+      <main className="max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-6 flex-1 flex flex-col space-y-4 sm:space-y-6 pb-28 sm:pb-24 lg:pb-8">
         {/* Mode Switcher: Stage Memos vs Weapon Memos */}
         <div className="flex items-center justify-between gap-3 bg-slate-900 border border-slate-800 p-1.5 sm:p-2 rounded-2xl">
           <div className="flex items-center gap-1.5 sm:gap-2 flex-1 max-w-md">
@@ -663,18 +663,18 @@ export default function App() {
         )}
       </main>
 
-      {/* Mobile Drawer / Bottom Sheet for 25 Stages Selection */}
+      {/* Mobile Drawer / Bottom Sheet for Stages Selection */}
       {mobileStageDrawerOpen && (
         <div
           className="fixed inset-0 z-50 lg:hidden flex flex-col justify-end bg-black/80 p-0 sm:p-4"
           onClick={() => setMobileStageDrawerOpen(false)}
         >
           <div
-            className="bg-slate-900 border-t sm:border border-slate-800 rounded-t-3xl sm:rounded-2xl max-h-[85vh] h-[80vh] flex flex-col overflow-hidden"
+            className="bg-slate-900 border-t sm:border border-slate-800 rounded-t-3xl sm:rounded-2xl max-h-[88vh] h-[85vh] sm:h-[80vh] flex flex-col overflow-hidden pb-[max(0.5rem,env(safe-area-inset-bottom))]"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="w-12 h-1.5 bg-slate-700 rounded-full mx-auto my-2.5 shrink-0" />
-            <div className="flex-1 overflow-hidden p-2">
+            <div className="flex-1 min-h-0 overflow-hidden p-2 flex flex-col">
               <StageSelector
                 selectedRuleId={selectedRuleId}
                 openStageIds={openStageIds}
@@ -695,11 +695,11 @@ export default function App() {
           onClick={() => setMobileWeaponDrawerOpen(false)}
         >
           <div
-            className="bg-slate-900 border-t sm:border border-slate-800 rounded-t-3xl sm:rounded-2xl max-h-[85vh] h-[80vh] flex flex-col overflow-hidden"
+            className="bg-slate-900 border-t sm:border border-slate-800 rounded-t-3xl sm:rounded-2xl max-h-[88vh] h-[85vh] sm:h-[80vh] flex flex-col overflow-hidden pb-[max(0.5rem,env(safe-area-inset-bottom))]"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="w-12 h-1.5 bg-slate-700 rounded-full mx-auto my-2.5 shrink-0" />
-            <div className="flex-1 overflow-hidden p-2">
+            <div className="flex-1 min-h-0 overflow-hidden p-2 flex flex-col">
               <WeaponSelector
                 weapons={userWeapons}
                 selectedWeaponId={selectedWeaponId}

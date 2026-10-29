@@ -9,3 +9,33 @@ body {
 button, input, textarea {
   touch-action: manipulation;
 }
+
+/* Suppress Netlify badge/snippet in mobile and desktop view */
+#netlify-badge,
+.netlify-badge,
+[data-netlify-badge],
+.netlify-identity-widget,
+[class*="netlify-badge"],
+[id*="netlify-badge"],
+a[href*="netlify.com"]:has(img),
+a[href*="netlify.app"]:has(img),
+img[src*="netlify-color-accent"],
+img[alt*="Netlify"],
+img[alt*="Deploys by Netlify"],
+iframe[title*="Netlify"],
+iframe[src*="netlify"],
+#netlify-drawer,
+.netlify-drawer {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  max-height: 0 !important;
+  max-width: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  bottom: -9999px !important;
+  right: -9999px !important;
+  z-index: -100 !important;
+}
+
